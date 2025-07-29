@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title TravelBuddy – Error
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    header
+      h1 Oops! Something went wrong 😢
+
+    main.result-container
+      section
+        if message
+          p= message
+        else
+          p We're having trouble fetching your travel info right now.
+
+        a.button(href="/") ← Back to Home

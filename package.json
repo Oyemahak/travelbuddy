@@ -1,0 +1,26 @@
+{
+  "name": "travelbuddy",
+  "version": "1.0.0",
+  "description": "Node.js app that shows travel info using 3 public APIs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Oyemahak/travelbuddy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Oyemahak/travelbuddy/issues"
+  },
+  "homepage": "https://github.com/Oyemahak/travelbuddy#readme",
+  "dependencies": {
+    "axios": "^1.11.0",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "pug": "^3.0.3"
+  }
+}

@@ -1,0 +1,59 @@
+doctype html
+html
+  head
+    title= name + " – TravelBuddy"
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    header
+      h1= `${name}, ${country}`
+
+    if error
+      p.error= error
+    else
+      main.result-container
+        section
+          h2 🌤 Weather
+          p Temperature: #{weather.main.temp}°C
+          p Description: #{weather.weather[0].description}
+          p Humidity: #{weather.main.humidity}%
+          p Wind Speed: #{weather.wind.speed} m/s
+
+        section
+          h2 🕒 Info
+          p Timezone: #{timezone || 'N/A'}
+          p Population: #{population.toLocaleString()}
+
+        section
+          h2 💱 Exchange Rate
+          if exchangeRates.rates && exchangeRates.rates.CAD
+            p 1 #{exchangeRates.base} = #{exchangeRates.rates.CAD.toFixed(2)} CAD
+          else if exchangeRates.base === 'CAD'
+            p 1 CAD = 1 CAD
+          else
+            p Exchange rate to CAD not available.
+
+        section
+          h2 📅 5-Day Forecast
+          if forecast && forecast.list
+            ul.forecast-list
+              each item in forecast.list
+                li= `${new Date(item.dt_txt).toLocaleString()} – ${item.main.temp}°C, ${item.weather[0].description}`
+          else
+            p No forecast data available.
+
+        section
+          h2 🏛 Nearby Landmarks
+          if landmarks && landmarks.length > 0
+            ul
+              each landmark in landmarks
+                li
+                  strong= landmark.name
+                  |  – #{landmark.type}
+                  if landmark.address
+                    | , #{landmark.address}
+          else
+            p No landmarks found nearby.
+
+      .divider
+      p
+        a(href="/") 🔙 Search another city
