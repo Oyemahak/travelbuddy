@@ -1,13 +1,19 @@
 doctype html
 html
   head
-    title TravelBuddy 🌍
+    title TravelBuddy
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet", href="/css/style.css")
   body
     header
-      h1 TravelBuddy 🌎✈️
+      h1 TravelBuddy
       p Plan your trip with confidence. Get city insights and travel essentials.
 
-    form(action="/search", method="POST")
-      input(type="text", name="city", placeholder="Enter city name", required)
-      button(type="submit") Search
+    main
+      form(action="/search", method="POST")
+        input(type="text", name="city", placeholder="Enter a city name", required)
+        button(type="submit") Search
+
+    .divider
+    footer
+      p © 2025 TravelBuddy. All rights reserved.

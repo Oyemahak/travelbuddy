@@ -2,16 +2,21 @@ doctype html
 html
   head
     title TravelBuddy – Error
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet", href="/css/style.css")
   body
     header
-      h1 Oops! Something went wrong 😢
+      h1 Something Went Wrong
 
     main.result-container
       section
         if message
           p= message
         else
-          p We're having trouble fetching your travel info right now.
+          p We're having trouble fetching your travel information right now.
 
-        a.button(href="/") ← Back to Home
+        a.button(href="/") Back to Home
+
+    .divider
+    footer
+      p © 2025 TravelBuddy. All rights reserved.

@@ -1,8 +1,7 @@
-// utils/fetchLandmarks.js
 const axios = require('axios');
 
 async function fetchLandmarks(lat, lon) {
-  const radius = 7000; // 7 km radius from city center
+  const radius = 7000;
   const limit = 10;
 
   const url = `https://api.geoapify.com/v2/places?categories=tourism.sights&filter=circle:${lon},${lat},${radius}&limit=${limit}&apiKey=${process.env.GEOAPIFY_KEY}`;

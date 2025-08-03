@@ -1,31 +1,35 @@
 doctype html
 html
   head
-    title= name + " – TravelBuddy"
+    title #{name} - TravelBuddy
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet", href="/css/style.css")
   body
     header
-      h1= `${name}, ${country}`
+      h1 #{name}, #{country}
 
     if error
-      p.error= error
+      main.result-container
+        section
+          p.error= error
     else
       main.result-container
         section
-          h2 🌤 Weather
-          p Temperature: #{weather.main.temp}°C
+          h2 Weather
+          p Temperature: #{weather.main.temp} °C
           p Description: #{weather.weather[0].description}
           p Humidity: #{weather.main.humidity}%
           p Wind Speed: #{weather.wind.speed} m/s
 
         section
-          h2 🕒 Info
+          h2 City Info
           p Timezone: #{timezone || 'N/A'}
           p Population: #{population.toLocaleString()}
 
         section
-          h2 💱 Exchange Rate
-          if exchangeRates.rates && exchangeRates.rates.CAD
+          h2 Currency (Compared to CAD)
+          if exchangeRates && exchangeRates.rates && exchangeRates.rates.CAD
             p 1 #{exchangeRates.base} = #{exchangeRates.rates.CAD.toFixed(2)} CAD
           else if exchangeRates.base === 'CAD'
             p 1 CAD = 1 CAD
@@ -33,27 +37,29 @@ html
             p Exchange rate to CAD not available.
 
         section
-          h2 📅 5-Day Forecast
+          h2 7-Day Forecast
           if forecast && forecast.list
             ul.forecast-list
-              each item in forecast.list
-                li= `${new Date(item.dt_txt).toLocaleString()} – ${item.main.temp}°C, ${item.weather[0].description}`
+              each item in forecast.list.slice(0, 7)
+                li
+                  strong #{new Date(item.dt_txt).toLocaleDateString()}: 
+                  | #{item.main.temp} °C, #{item.weather[0].description}
           else
             p No forecast data available.
 
         section
-          h2 🏛 Nearby Landmarks
+          h2 Nearby Landmarks
           if landmarks && landmarks.length > 0
             ul
               each landmark in landmarks
                 li
                   strong= landmark.name
-                  |  – #{landmark.type}
+                  |  - #{landmark.type}
                   if landmark.address
                     | , #{landmark.address}
           else
             p No landmarks found nearby.
 
-      .divider
-      p
-        a(href="/") 🔙 Search another city
+    .divider
+    p(style="text-align:center; margin-top: 2rem;")
+      a(href="/", class="button") Search another city

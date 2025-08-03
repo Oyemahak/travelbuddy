@@ -1,4 +1,3 @@
-// utils/fetchForecast.js
 const axios = require('axios');
 
 async function fetchForecast(lat, lon) {
