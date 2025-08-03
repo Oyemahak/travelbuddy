@@ -89,5 +89,3 @@ Made with 💙 by [Mahak Patel](https://www.linkedin.com/in/mahak-patel-16764015
 Feel free to connect or reach out via:
 
 - ✉️ Email: [mahakpateluux@gmail.com](mailto:mahakpateluux@gmail.com)
-- 🌐 Portfolio: [https://mahak-patel.vercel.app](https://mahak-patel.vercel.app)
-- 📱 Phone: +1 (647) 285-9293
